@@ -39,9 +39,7 @@ public class UserEntity {
         UserEntity that = (UserEntity) o;
 
         if (!Objects.equals(loginUser, that.loginUser)) return false;
-        if (!Objects.equals(passwordUser, that.passwordUser)) return false;
-
-        return true;
+        return Objects.equals(passwordUser, that.passwordUser);
     }
 
     @Override

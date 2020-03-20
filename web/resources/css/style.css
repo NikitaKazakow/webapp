@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+
+form {
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 8px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+p {
+    font-size: x-large;
+    margin-top: 2px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+
+
+

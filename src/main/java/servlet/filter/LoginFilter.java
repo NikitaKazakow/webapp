@@ -14,12 +14,12 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
-        final HttpServletRequest request = (HttpServletRequest)servletRequest;
-        final HttpServletResponse response = (HttpServletResponse)servletResponse;
+        HttpServletRequest request = (HttpServletRequest)servletRequest;
+        HttpServletResponse response = (HttpServletResponse)servletResponse;
 
-        final HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
 
-        if (request.getRequestURI().matches("\\S*\\/resources\\/\\S*")) {
+        if (request.getRequestURI().matches("\\S*/resources/\\S*") || request.getRequestURI().equals("/logout")) {
             filterChain.doFilter(request, response);
         } else {
             if (session != null &&
@@ -27,12 +27,12 @@ public class LoginFilter implements Filter {
                     session.getAttribute("password") != null) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             } else {
-                final String login = request.getParameter("login");
-                final String password = request.getParameter("password");
+                String login = request.getParameter("login");
+                String password = request.getParameter("password");
                 if (userService.isUserExists(login, password)) {
                     request.getSession().setAttribute("login", login);
                     request.getSession().setAttribute("password", password);
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
                 else {
                     request.getRequestDispatcher("/login.jsp").forward(request, response);

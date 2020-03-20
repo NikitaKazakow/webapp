@@ -9,18 +9,22 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
-    <header>
-        <img src="resources/img/logo.png" alt="webApp" width="96" height="96">
-        <h1>Sales management</h1>
-    </header>
-    <form method="post" action="${pageContext.request.contextPath}/login.jsp">
-        <label>
-            <input type="text" name="login">
-            <input type="password" name="password">
-            <input type="submit" title="Войти">
-        </label>
-    </form>
+    <div class="header">
+        <div class="logo">
+            <img src="resources/img/logo.png" width="85" height="85">
+            <p>Система учета продаж автомобилей</p>
+        </div>
+    </div>
+    <div class="login-form">
+        <form method="post" action="${pageContext.request.contextPath}/login.jsp">
+            <p>Вход в систему:</p>
+            <input type="text" required name="login" id="loginInput" placeholder="Логин">
+            <input type="password" required name="password" id="passwordInput" placeholder="Пароль">
+            <button type="submit">Войти</button>
+        </form>
+    </div>
 </body>
 </html>
