@@ -3,6 +3,7 @@ package entity;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "car", schema = "public", catalog = "webapp")
@@ -67,7 +68,7 @@ public class CarEntity {
     }
 
     @Basic
-    @Column(name = "column_6", nullable = true)
+    @Column(name = "column_6")
     public Integer getColumn6() {
         return column6;
     }
@@ -83,27 +84,25 @@ public class CarEntity {
 
         CarEntity carEntity = (CarEntity) o;
 
-        if (vinNumberCar != null ? !vinNumberCar.equals(carEntity.vinNumberCar) : carEntity.vinNumberCar != null)
+        if (!Objects.equals(vinNumberCar, carEntity.vinNumberCar))
             return false;
-        if (yearOfIssueCar != null ? !yearOfIssueCar.equals(carEntity.yearOfIssueCar) : carEntity.yearOfIssueCar != null)
+        if (!Objects.equals(yearOfIssueCar, carEntity.yearOfIssueCar))
             return false;
-        if (colourCar != null ? !colourCar.equals(carEntity.colourCar) : carEntity.colourCar != null) return false;
-        if (modelCar != null ? !modelCar.equals(carEntity.modelCar) : carEntity.modelCar != null) return false;
-        if (manufactureCountry != null ? !manufactureCountry.equals(carEntity.manufactureCountry) : carEntity.manufactureCountry != null)
+        if (!Objects.equals(colourCar, carEntity.colourCar)) return false;
+        if (!Objects.equals(modelCar, carEntity.modelCar)) return false;
+        if (!Objects.equals(manufactureCountry, carEntity.manufactureCountry))
             return false;
-        if (column6 != null ? !column6.equals(carEntity.column6) : carEntity.column6 != null) return false;
-
-        return true;
+        return Objects.equals(column6, carEntity.column6);
     }
 
     @Override
     public int hashCode() {
         int result = vinNumberCar != null ? vinNumberCar.hashCode() : 0;
-        result = 31 * result + (yearOfIssueCar != null ? yearOfIssueCar.hashCode() : 0);
-        result = 31 * result + (colourCar != null ? colourCar.hashCode() : 0);
-        result = 31 * result + (modelCar != null ? modelCar.hashCode() : 0);
-        result = 31 * result + (manufactureCountry != null ? manufactureCountry.hashCode() : 0);
-        result = 31 * result + (column6 != null ? column6.hashCode() : 0);
+        result = (31 * result) + ((yearOfIssueCar != null) ? yearOfIssueCar.hashCode() : 0);
+        result = (31 * result) + ((colourCar != null) ? colourCar.hashCode() : 0);
+        result = (31 * result) + ((modelCar != null) ? modelCar.hashCode() : 0);
+        result = (31 * result) + ((manufactureCountry != null) ? manufactureCountry.hashCode() : 0);
+        result = (31 * result) + ((column6 != null) ? column6.hashCode() : 0);
         return result;
     }
 

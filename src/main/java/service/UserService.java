@@ -2,6 +2,9 @@ package service;
 
 import dao.impl.UserDaoImpl;
 import entity.UserEntity;
+import util.PasswordEncryption;
+
+import java.util.Optional;
 
 public class UserService {
 
@@ -16,7 +19,22 @@ public class UserService {
         return result;
     }
 
-    public boolean isUserExists(String userName, String password) {
-        return userDao.isUserExist(userName, password);
+    public boolean isUserExists(String userName) {
+        boolean result = false;
+        Optional<UserEntity> optionalUserEntity = userDao.get(userName);
+        if (optionalUserEntity.isPresent()) {
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean checkPassword(String login, String password) {
+        Optional<UserEntity> userEntity = userDao.get(login);
+        if (userEntity.isPresent()) {
+            String passwordHash = userEntity.get().getPasswordUser();
+            return PasswordEncryption.checkPasswords(password, passwordHash);
+        }
+        else
+            return false;
     }
 }

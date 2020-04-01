@@ -4,6 +4,7 @@ import entity.pk.ClientEntityPK;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "client", schema = "public", catalog = "webapp")
@@ -73,18 +74,15 @@ public class ClientEntity {
 
         ClientEntity that = (ClientEntity) o;
 
-        if (passportSeriesClient != null ? !passportSeriesClient.equals(that.passportSeriesClient) : that.passportSeriesClient != null)
+        if (!Objects.equals(passportSeriesClient, that.passportSeriesClient))
             return false;
-        if (passportNumberClient != null ? !passportNumberClient.equals(that.passportNumberClient) : that.passportNumberClient != null)
+        if (!Objects.equals(passportNumberClient, that.passportNumberClient))
             return false;
-        if (fullNameClient != null ? !fullNameClient.equals(that.fullNameClient) : that.fullNameClient != null)
+        if (!Objects.equals(fullNameClient, that.fullNameClient))
             return false;
-        if (phoneNumberClient != null ? !phoneNumberClient.equals(that.phoneNumberClient) : that.phoneNumberClient != null)
+        if (!Objects.equals(phoneNumberClient, that.phoneNumberClient))
             return false;
-        if (homeAddressClient != null ? !homeAddressClient.equals(that.homeAddressClient) : that.homeAddressClient != null)
-            return false;
-
-        return true;
+        return Objects.equals(homeAddressClient, that.homeAddressClient);
     }
 
     @Override

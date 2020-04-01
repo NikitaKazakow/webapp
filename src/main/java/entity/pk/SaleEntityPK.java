@@ -3,6 +3,7 @@ package entity.pk;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class SaleEntityPK implements Serializable {
     private int idSale;
@@ -36,10 +37,7 @@ public class SaleEntityPK implements Serializable {
         SaleEntityPK that = (SaleEntityPK) o;
 
         if (idSale != that.idSale) return false;
-        if (loginUserSaleFk != null ? !loginUserSaleFk.equals(that.loginUserSaleFk) : that.loginUserSaleFk != null)
-            return false;
-
-        return true;
+        return Objects.equals(loginUserSaleFk, that.loginUserSaleFk);
     }
 
     @Override

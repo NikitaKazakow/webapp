@@ -3,6 +3,7 @@ package entity;
 import entity.pk.SpecificationEntityPK;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "specification", schema = "public", catalog = "webapp")
@@ -132,18 +133,15 @@ public class SpecificationEntity {
         if (engineCylinderCountSpecification != that.engineCylinderCountSpecification) return false;
         if (enginePowerSpecification != that.enginePowerSpecification) return false;
         if (doorsCountSpecification != that.doorsCountSpecification) return false;
-        if (vinNumberCarSpecificationFk != null ? !vinNumberCarSpecificationFk.equals(that.vinNumberCarSpecificationFk) : that.vinNumberCarSpecificationFk != null)
+        if (!Objects.equals(vinNumberCarSpecificationFk, that.vinNumberCarSpecificationFk))
             return false;
-        if (engineTypeSpecification != null ? !engineTypeSpecification.equals(that.engineTypeSpecification) : that.engineTypeSpecification != null)
+        if (!Objects.equals(engineTypeSpecification, that.engineTypeSpecification))
             return false;
-        if (bodyTypeSpecification != null ? !bodyTypeSpecification.equals(that.bodyTypeSpecification) : that.bodyTypeSpecification != null)
+        if (!Objects.equals(bodyTypeSpecification, that.bodyTypeSpecification))
             return false;
-        if (driveTypeSpecification != null ? !driveTypeSpecification.equals(that.driveTypeSpecification) : that.driveTypeSpecification != null)
+        if (!Objects.equals(driveTypeSpecification, that.driveTypeSpecification))
             return false;
-        if (gearBoxTypeSpecification != null ? !gearBoxTypeSpecification.equals(that.gearBoxTypeSpecification) : that.gearBoxTypeSpecification != null)
-            return false;
-
-        return true;
+        return Objects.equals(gearBoxTypeSpecification, that.gearBoxTypeSpecification);
     }
 
     @Override

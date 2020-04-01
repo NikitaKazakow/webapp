@@ -5,6 +5,7 @@ import entity.pk.SaleEntityPK;
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "sale", schema = "public", catalog = "webapp")
@@ -39,7 +40,7 @@ public class SaleEntity {
     }
 
     @Basic
-    @Column(name = "payment_amount", nullable = false, precision = 0)
+    @Column(name = "payment_amount", nullable = false)
     public BigInteger getPaymentAmount() {
         return paymentAmount;
     }
@@ -66,13 +67,10 @@ public class SaleEntity {
         SaleEntity that = (SaleEntity) o;
 
         if (idSale != that.idSale) return false;
-        if (dateSale != null ? !dateSale.equals(that.dateSale) : that.dateSale != null) return false;
-        if (paymentAmount != null ? !paymentAmount.equals(that.paymentAmount) : that.paymentAmount != null)
+        if (!Objects.equals(dateSale, that.dateSale)) return false;
+        if (!Objects.equals(paymentAmount, that.paymentAmount))
             return false;
-        if (loginUserSaleFk != null ? !loginUserSaleFk.equals(that.loginUserSaleFk) : that.loginUserSaleFk != null)
-            return false;
-
-        return true;
+        return Objects.equals(loginUserSaleFk, that.loginUserSaleFk);
     }
 
     @Override

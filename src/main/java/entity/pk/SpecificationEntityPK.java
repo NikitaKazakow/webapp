@@ -3,6 +3,7 @@ package entity.pk;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class SpecificationEntityPK implements Serializable {
     private int idSpecification;
@@ -48,10 +49,7 @@ public class SpecificationEntityPK implements Serializable {
 
         if (idSpecification != that.idSpecification) return false;
         if (idComplectationSpecificationFk != that.idComplectationSpecificationFk) return false;
-        if (vinNumberCarSpecificationFk != null ? !vinNumberCarSpecificationFk.equals(that.vinNumberCarSpecificationFk) : that.vinNumberCarSpecificationFk != null)
-            return false;
-
-        return true;
+        return Objects.equals(vinNumberCarSpecificationFk, that.vinNumberCarSpecificationFk);
     }
 
     @Override

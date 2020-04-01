@@ -3,6 +3,7 @@ package entity.pk;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class ClientEntityPK implements Serializable {
     private String passportSeriesClient;
@@ -35,12 +36,9 @@ public class ClientEntityPK implements Serializable {
 
         ClientEntityPK that = (ClientEntityPK) o;
 
-        if (passportSeriesClient != null ? !passportSeriesClient.equals(that.passportSeriesClient) : that.passportSeriesClient != null)
+        if (!Objects.equals(passportSeriesClient, that.passportSeriesClient))
             return false;
-        if (passportNumberClient != null ? !passportNumberClient.equals(that.passportNumberClient) : that.passportNumberClient != null)
-            return false;
-
-        return true;
+        return Objects.equals(passportNumberClient, that.passportNumberClient);
     }
 
     @Override

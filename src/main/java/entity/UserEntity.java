@@ -36,7 +36,8 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserEntity that = (UserEntity) o;
+        UserEntity that;
+        that = (UserEntity) o;
 
         if (!Objects.equals(loginUser, that.loginUser)) return false;
         return Objects.equals(passwordUser, that.passwordUser);

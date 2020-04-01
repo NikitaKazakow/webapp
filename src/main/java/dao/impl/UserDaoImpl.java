@@ -25,15 +25,11 @@ public class UserDaoImpl implements IDao<UserEntity, String> {
                         criteriaBuilder.equal(root.get("loginUser"), username));
         try {
             session.createQuery(criteriaQuery).getSingleResult();
-            result = true;
         }
         catch (NoResultException ex) {
-            ex.printStackTrace();
             result = false;
         }
-        finally {
-            return result;
-        }
+        return result;
     }
 
     @Override

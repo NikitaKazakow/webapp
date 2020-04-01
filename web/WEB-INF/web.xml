@@ -17,6 +17,10 @@
         <servlet-name>logOutServlet</servlet-name>
         <servlet-class>servlet.LogOutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>registrationServlet</servlet-name>
+        <servlet-class>servlet.RegistrationServlet</servlet-class>
+    </servlet>
 
     <!--Filters mapping-->
     <filter-mapping>
@@ -28,6 +32,10 @@
     <servlet-mapping>
         <servlet-name>logOutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registrationServlet</servlet-name>
+        <url-pattern>/registration</url-pattern>
     </servlet-mapping>
 
     <mime-mapping>

@@ -5,6 +5,7 @@ import entity.pk.ComplectationEntityPK;
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "complectation", schema = "public", catalog = "webapp")
@@ -48,7 +49,7 @@ public class ComplectationEntity {
     }
 
     @Basic
-    @Column(name = "price_complectation", nullable = false, precision = 0)
+    @Column(name = "price_complectation", nullable = false)
     public BigInteger getPriceComplectation() {
         return priceComplectation;
     }
@@ -65,14 +66,11 @@ public class ComplectationEntity {
         ComplectationEntity that = (ComplectationEntity) o;
 
         if (idComplectation != that.idComplectation) return false;
-        if (vinNumberCarFk != null ? !vinNumberCarFk.equals(that.vinNumberCarFk) : that.vinNumberCarFk != null)
+        if (!Objects.equals(vinNumberCarFk, that.vinNumberCarFk))
             return false;
-        if (nameComplectation != null ? !nameComplectation.equals(that.nameComplectation) : that.nameComplectation != null)
+        if (!Objects.equals(nameComplectation, that.nameComplectation))
             return false;
-        if (priceComplectation != null ? !priceComplectation.equals(that.priceComplectation) : that.priceComplectation != null)
-            return false;
-
-        return true;
+        return Objects.equals(priceComplectation, that.priceComplectation);
     }
 
     @Override

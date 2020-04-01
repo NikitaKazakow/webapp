@@ -3,6 +3,7 @@ package entity.pk;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class ComplectationEntityPK implements Serializable {
     private int idComplectation;
@@ -36,10 +37,7 @@ public class ComplectationEntityPK implements Serializable {
         ComplectationEntityPK that = (ComplectationEntityPK) o;
 
         if (idComplectation != that.idComplectation) return false;
-        if (vinNumberCarFk != null ? !vinNumberCarFk.equals(that.vinNumberCarFk) : that.vinNumberCarFk != null)
-            return false;
-
-        return true;
+        return Objects.equals(vinNumberCarFk, that.vinNumberCarFk);
     }
 
     @Override

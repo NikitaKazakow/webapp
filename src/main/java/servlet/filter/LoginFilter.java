@@ -1,6 +1,7 @@
 package servlet.filter;
 
 import service.UserService;
+import util.PasswordEncryption;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -19,20 +20,26 @@ public class LoginFilter implements Filter {
 
         HttpSession session = request.getSession();
 
-        if (request.getRequestURI().matches("\\S*/resources/\\S*") || request.getRequestURI().equals("/logout")) {
+        if (request.getRequestURI().matches("\\S*/resources/\\S*") ||
+                (request.getRequestURI().matches("\\S*/registration\\S*"))) {
             filterChain.doFilter(request, response);
         } else {
-            if (session != null &&
-                    session.getAttribute("login") != null &&
-                    session.getAttribute("password") != null) {
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            if (session.getAttribute("login") != null && session.getAttribute("password") != null) {
+                filterChain.doFilter(request, response);
             } else {
                 String login = request.getParameter("login");
                 String password = request.getParameter("password");
-                if (userService.isUserExists(login, password)) {
-                    request.getSession().setAttribute("login", login);
-                    request.getSession().setAttribute("password", password);
-                    request.getRequestDispatcher("/index.jsp").forward(request, response);
+
+                if (login != null || password != null) {
+                    if (userService.isUserExists(login) && userService.checkPassword(login, password)) {
+                        request.getSession().setAttribute("login", login);
+                        request.getSession().setAttribute("password", PasswordEncryption.crypt(password));
+                        request.getRequestDispatcher("/index.jsp").forward(request, response);
+                    }
+                    else {
+                        request.setAttribute("state", 1);
+                        request.getRequestDispatcher("/login.jsp").forward(request, response);
+                    }
                 }
                 else {
                     request.getRequestDispatcher("/login.jsp").forward(request, response);
