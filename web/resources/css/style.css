@@ -1,25 +1,39 @@
 body {
     margin: 0;
+    padding-top: 10%;
 }
 
-form {
+.error {
+    font-size: medium;
+    color: red;
+    border: 1px solid red;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    width: 100%;
+}
+
+.login_form {
     margin: auto;
     width: 30%;
     padding: 10px;
     text-align: center;
 }
 
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+.login_form a {
+    margin-bottom: 5px;
 }
 
-button {
+.login_form p {
+    font-size: x-large;
+    margin-top: 2px;
+    margin-bottom: 0;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.25;
+}
+
+.login_form button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -29,17 +43,76 @@ button {
     width: 100%;
 }
 
-p {
-    font-size: x-large;
-    margin-top: 2px;
-    margin-bottom: 0;
-    text-align: center;
+.login_form input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
-.error {
-    font-size: medium;
-    color: red;
-    border: 1px solid red;
-    padding-bottom: 5px;
-    padding-top: 5px;
+.fixed-header {
+    width: 100%;
+    position: fixed;
+    background: #e2e2e2;
+    padding: 10px 0;
+    color: #fff;
+    top: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.logo {
+    background-color: transparent;
+    width: 64px;
+    height: 64px;
+
+}
+
+
+nav a{
+    color: #4b4b4b;
+    text-decoration: none;
+    padding: 7px 25px;
+    display: inline-block;
+    font-size: 18pt;
+}
+
+nav a, img {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.25;
+}
+
+.logout_container {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.25;
+    float: right;
+    padding: 7px 25px;
+}
+
+.logout_container button {
+    padding: 7px 25px;
+    background-color: #1c47ff;
+    border-radius: 10px;
+    color: white;
+    margin-top: 8px;
+    border: none;
+    cursor: pointer;
+    height: 100%;
+}
+
+.logout_container a {
+    font-size: 15pt;
+}
+
+.logout_container form {
+    margin: auto;
+    display: contents;
 }

@@ -9,29 +9,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Вход в систему</title>
     <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
-    <div>
-        <div class=>
-            <img src="resources/img/logo.png" width="85" height="85" alt="Main">
-            <p>Система учета продаж автомобилей</p>
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <img class="logo" src="resources/img/logo.png">
+                <a href="/">Продажа автомобилей</a>
+            </nav>
         </div>
     </div>
-    <div>
-        <form method="post" action="${pageContext.request.contextPath}/login">
-            <p>Вход в систему:</p>
-            <input type="text" required name="login" id="loginInput" placeholder="Логин">
-            <input type="password" required name="password" id="passwordInput" placeholder="Пароль">
-            <c:if test="${state == 1}">
-                <div>
-                    <p class="error">Неверный логин или пароль</p>
-                </div>
-            </c:if>
-            <button type="submit">Войти</button>
-            <a href="${pageContext.request.contextPath}/registration">Регистрация</a>
-        </form>
-    </div>
+    <form class="login_form" method="post" action="${pageContext.request.contextPath}/login">
+        <p>Вход в систему:</p>
+        <input type="text" required name="login" id="loginInput" placeholder="Логин">
+        <input type="password" required name="password" id="passwordInput" placeholder="Пароль">
+        <c:if test="${state == 1}">
+            <div>
+                <p class="error">Неверный логин или пароль</p>
+            </div>
+        </c:if>
+        <button type="submit">Войти</button>
+        <a href="${pageContext.request.contextPath}/registration">Регистрация</a>
+    </form>
 </body>
 </html>
