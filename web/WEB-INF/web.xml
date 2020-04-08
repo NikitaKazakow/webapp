@@ -21,6 +21,14 @@
         <servlet-name>registrationServlet</servlet-name>
         <servlet-class>servlet.RegistrationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>carServlet</servlet-name>
+        <servlet-class>servlet.CarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ComplectationServlet</servlet-name>
+        <servlet-class>servlet.ComplectationServlet</servlet-class>
+    </servlet>
 
     <!--Filters mapping-->
     <filter-mapping>
@@ -36,6 +44,14 @@
     <servlet-mapping>
         <servlet-name>registrationServlet</servlet-name>
         <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>carServlet</servlet-name>
+        <url-pattern>/car</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComplectationServlet</servlet-name>
+        <url-pattern>/complectation</url-pattern>
     </servlet-mapping>
 
     <mime-mapping>

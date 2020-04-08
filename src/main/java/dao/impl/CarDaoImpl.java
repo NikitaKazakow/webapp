@@ -11,7 +11,12 @@ import java.util.Optional;
 public class CarDaoImpl implements IDao<CarEntity, String> {
     @Override
     public Optional<CarEntity> get(String id) {
-        return Optional.ofNullable(HibernateUtil.getSession().get(CarEntity.class, id));
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Optional<CarEntity> carEntityOptional = Optional.ofNullable(session.get(CarEntity.class, id));
+        session.getTransaction().commit();
+        session.close();
+        return carEntityOptional;
     }
 
     @Override

@@ -71,9 +71,7 @@ body {
     background-color: transparent;
     width: 64px;
     height: 64px;
-
 }
-
 
 nav a{
     color: #4b4b4b;
@@ -115,4 +113,190 @@ nav a, img {
 .logout_container form {
     margin: auto;
     display: contents;
+}
+
+.main-menu {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    padding: 20px;
+}
+
+.main-menu button {
+    width: 100%;
+    height: 15%;
+    padding: 14px 20px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #e2e2e2;
+    font-size: 15pt;
+}
+
+.main-menu button:hover {
+    background-color: rgba(34,76,255,0.55);
+}
+
+.table-style {
+    font-size: 14px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+}
+
+.table-style th {
+    background: #BCEBDD;
+    color:  #4b4b4b;
+    text-shadow: 0 1px 1px white;
+    padding: 10px 20px;
+}
+
+.table-style th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+
+.table-style td {
+    padding: 10px 20px;
+}
+
+.table-style tr {
+    background: #F8E391;
+}
+
+.row-choice:hover {
+    color: white;
+    background: rgba(34,76,255,0.82)
+}
+
+.row-choosen {
+    color: white;
+    background: rgba(34,76,255,0.82)
+}
+
+.table-style th:first-child, td:first-child {
+    text-align: left;
+}
+
+.table-style th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.table-style th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+}
+
+.table-style tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.table-style tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+.table-style tr td:last-child {
+    border-right: none;
+}
+
+.button-container {
+    width: 300px;
+    margin-left: 10%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.button-container button{
+    border-radius: 10px;
+    font-size: 14pt;
+    width: 45%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.add-button {
+    background-color: #1c47ff;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.delete-button {
+    background-color: darkred;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.delete-button:focus {
+    outline: none;
+}
+
+.add-button:focus {
+    outline: none;
+}
+
+.add-dialog dialog{
+    border-radius: 10px;
+    border: 5px #4b4b4b;
+    padding: 5px;
+}
+
+
+.add-dialog input {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.add-dialog form {
+    text-align: center;
+}
+
+.dialog-panel button{
+    display: inline-block;
+    padding: 10px;
+    float: right;
+    font-size: 20pt;
+    cursor: pointer;
+    color: #4b4b4b;
+    background-color: transparent;
+    border: none;
+}
+
+.dialog-panel button:focus {
+    outline: none;
+}
+
+.dialog-panel button:hover {
+    color: rgba(34,76,255,0.74);
+}
+
+.dialog-panel p {
+    display: inline-block;
+    font-size: 18pt;
+    padding: 10px;
+    margin: 0;
+}
+
+.modal-button-container button{
+    border-radius: 10px;
+    font-size: 14pt;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 5px;
+    float: right;
+}
+
+.modal.button-container {
+    padding: 10px;
 }

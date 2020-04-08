@@ -17,7 +17,7 @@
     <div class="container">
       <nav>
         <img class="logo" src="resources/img/logo.png">
-        <a href="/">Продажа автомобилей</a>
+        <a href="${pageContext.request.contextPath}/">Продажа автомобилей</a>
         <div class="logout_container">
           <a>Пользователь: ${sessionScope.get("login")}</a>
           <form action="${pageContext.request.contextPath}/logout" method="get">
@@ -26,6 +26,20 @@
         </div>
       </nav>
     </div>
+  </div>
+  <div class="container">
+    <nav class="main-menu">
+      <form action="${pageContext.request.contextPath}/client" method="get">
+        <button type="submit">Работа с клиентами</button>
+      </form>
+      <form action="${pageContext.request.contextPath}/car" method="get">
+        <input hidden name="vin" value="all">
+        <button type="submit">Работа с автомобилями</button>
+      </form>
+      <form action="${pageContext.request.contextPath}/sale" method="get">
+        <button type="submit">Работа с продажами</button>
+      </form>
+    </nav>
   </div>
   </body>
 </html>

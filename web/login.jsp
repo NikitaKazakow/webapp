@@ -21,7 +21,7 @@
             </nav>
         </div>
     </div>
-    <form class="login_form" method="post" action="${pageContext.request.contextPath}/login">
+    <form class="login_form" method="post" action="${pageContext.request.contextPath}/">
         <p>Вход в систему:</p>
         <input type="text" required name="login" id="loginInput" placeholder="Логин">
         <input type="password" required name="password" id="passwordInput" placeholder="Пароль">

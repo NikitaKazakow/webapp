@@ -1,7 +1,6 @@
 package entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -9,11 +8,11 @@ import java.util.Objects;
 @Table(name = "car", schema = "public", catalog = "webapp")
 public class CarEntity {
     private String vinNumberCar;
-    private Date yearOfIssueCar;
+    private Integer yearOfIssueCar;
     private String colourCar;
+    private String markCar;
     private String modelCar;
     private String manufactureCountry;
-    private Integer column6;
     private Collection<ComplectationEntity> complectationsByVinNumberCar;
     private Collection<SaleEntity> salesByVinNumberCar;
 
@@ -29,11 +28,11 @@ public class CarEntity {
 
     @Basic
     @Column(name = "year_of_issue_car", nullable = false)
-    public Date getYearOfIssueCar() {
+    public Integer getYearOfIssueCar() {
         return yearOfIssueCar;
     }
 
-    public void setYearOfIssueCar(Date yearOfIssueCar) {
+    public void setYearOfIssueCar(Integer yearOfIssueCar) {
         this.yearOfIssueCar = yearOfIssueCar;
     }
 
@@ -45,6 +44,16 @@ public class CarEntity {
 
     public void setColourCar(String colourCar) {
         this.colourCar = colourCar;
+    }
+
+    @Basic
+    @Column(name = "mark_car", nullable = false, length = 30)
+    public String getMarkCar() {
+        return markCar;
+    }
+
+    public void setMarkCar(String markCar) {
+        this.markCar = markCar;
     }
 
     @Basic
@@ -67,15 +76,6 @@ public class CarEntity {
         this.manufactureCountry = manufactureCountry;
     }
 
-    @Basic
-    @Column(name = "column_6")
-    public Integer getColumn6() {
-        return column6;
-    }
-
-    public void setColumn6(Integer column6) {
-        this.column6 = column6;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -90,9 +90,8 @@ public class CarEntity {
             return false;
         if (!Objects.equals(colourCar, carEntity.colourCar)) return false;
         if (!Objects.equals(modelCar, carEntity.modelCar)) return false;
-        if (!Objects.equals(manufactureCountry, carEntity.manufactureCountry))
-            return false;
-        return Objects.equals(column6, carEntity.column6);
+        if (!Objects.equals(markCar, carEntity.markCar)) return false;
+        return  Objects.equals(manufactureCountry, carEntity.manufactureCountry);
     }
 
     @Override
@@ -102,7 +101,7 @@ public class CarEntity {
         result = (31 * result) + ((colourCar != null) ? colourCar.hashCode() : 0);
         result = (31 * result) + ((modelCar != null) ? modelCar.hashCode() : 0);
         result = (31 * result) + ((manufactureCountry != null) ? manufactureCountry.hashCode() : 0);
-        result = (31 * result) + ((column6 != null) ? column6.hashCode() : 0);
+        result = (31 * result) + ((markCar != null) ? markCar.hashCode() : 0);
         return result;
     }
 
