@@ -30,18 +30,20 @@ public class LoginFilter implements Filter {
                 String login = request.getParameter("login");
                 String password = request.getParameter("password");
 
-                if (login != null || password != null) {
+                if (login != null && password != null) {
                     if (userService.isUserExists(login) && userService.checkPassword(login, password)) {
                         request.getSession().setAttribute("login", login);
                         request.getSession().setAttribute("password", PasswordEncryption.crypt(password));
                         request.getRequestDispatcher("/index.jsp").forward(request, response);
                     }
                     else {
-                        request.setAttribute("state", 1);
+                        request.setAttribute("error", "1");
+                        request.setAttribute("login", login);
                         request.getRequestDispatcher("/login.jsp").forward(request, response);
                     }
                 }
                 else {
+                    request.setAttribute("error", "0");
                     request.getRequestDispatcher("/login.jsp").forward(request, response);
                 }
             }

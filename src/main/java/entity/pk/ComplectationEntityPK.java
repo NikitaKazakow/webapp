@@ -1,49 +1,22 @@
 package entity.pk;
 
+import lombok.*;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Objects;
 
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
 public class ComplectationEntityPK implements Serializable {
-    private int idComplectation;
-    private String vinNumberCarFk;
-
-    @Column(name = "id_complectation", nullable = false)
     @Id
-    public int getIdComplectation() {
-        return idComplectation;
-    }
+    @Column(name = "name_complectation", nullable = false, length = 30)
+    private String nameComplectation;
 
-    public void setIdComplectation(int idComplectation) {
-        this.idComplectation = idComplectation;
-    }
-
+    @Id
     @Column(name = "vin_number_car_fk", nullable = false, length = 17)
-    @Id
-    public String getVinNumberCarFk() {
-        return vinNumberCarFk;
-    }
-
-    public void setVinNumberCarFk(String vinNumberCarFk) {
-        this.vinNumberCarFk = vinNumberCarFk;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ComplectationEntityPK that = (ComplectationEntityPK) o;
-
-        if (idComplectation != that.idComplectation) return false;
-        return Objects.equals(vinNumberCarFk, that.vinNumberCarFk);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idComplectation;
-        result = 31 * result + (vinNumberCarFk != null ? vinNumberCarFk.hashCode() : 0);
-        return result;
-    }
+    String vinNumberCarFk;
 }

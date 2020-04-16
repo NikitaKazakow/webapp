@@ -5,32 +5,10 @@ import entity.UserEntity;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
-import javax.persistence.NoResultException;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 
 public class UserDaoImpl implements IDao<UserEntity, String> {
-
-    public boolean isUserExist(String username, String password) {
-        boolean result = true;
-        Session session = HibernateUtil.getSession();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<UserEntity> criteriaQuery = criteriaBuilder.createQuery(UserEntity.class);
-        Root<UserEntity> root = criteriaQuery.from(UserEntity.class);
-        criteriaQuery.select(root)
-                .where(criteriaBuilder.and(criteriaBuilder.equal(root.get("passwordUser"), password)),
-                        criteriaBuilder.equal(root.get("loginUser"), username));
-        try {
-            session.createQuery(criteriaQuery).getSingleResult();
-        }
-        catch (NoResultException ex) {
-            result = false;
-        }
-        return result;
-    }
 
     @Override
     public Optional<UserEntity> get(String id) {

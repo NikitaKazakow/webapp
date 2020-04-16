@@ -1,114 +1,70 @@
 package entity;
 
 import entity.pk.SaleEntityPK;
+import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigInteger;
-import java.sql.Date;
-import java.util.Objects;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
+@Getter
 @Entity
-@Table(name = "sale", schema = "public", catalog = "webapp")
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
 @IdClass(SaleEntityPK.class)
+@Table(name = "sale", schema = "public", catalog = "webapp")
 public class SaleEntity {
-    private int idSale;
-    private Date dateSale;
-    private BigInteger paymentAmount;
+    @Id
+    @Setter
+    @Column(name = "login_user_fk", length = 20)
     private String loginUserSaleFk;
-    private ClientEntity client;
-    private CarEntity carByVinNumberCarFk;
-    private UserEntity userByLoginUserSaleFk;
 
     @Id
-    @Column(name = "id_sale", nullable = false)
-    public int getIdSale() {
-        return idSale;
-    }
+    @Setter
+    @Column(name = "vin_number_car_fk", length = 17)
+    private String vinNumberCarFk;
 
-    public void setIdSale(int idSale) {
-        this.idSale = idSale;
-    }
+    @Id
+    @Setter
+    @Column(name = "client_passport_number_fk", length = 17)
+    private String passportNumberClientFk;
 
     @Basic
-    @Column(name = "date_sale", nullable = false)
-    public Date getDateSale() {
-        return dateSale;
+    @Column(name = "date_sale")
+    private Calendar dateSale;
+
+    @Basic
+    @Setter
+    @Column(name = "payment_amount")
+    private Integer paymentAmount;
+
+    @Setter
+    @OneToOne
+    @JoinColumn(name = "client_passport_number_fk", referencedColumnName = "passport_number_client", insertable = false, updatable = false)
+    private ClientEntity client;
+
+    @Setter
+    @OneToOne
+    @JoinColumn(name = "vin_number_car_fk", referencedColumnName = "vin_number_car", insertable = false, updatable = false)
+    private CarEntity carByVinNumberCarFk;
+
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "login_user_fk", referencedColumnName = "login_user", insertable = false, updatable = false)
+    private UserEntity user;
+
+    public void setDateSale() {
+        this.dateSale = Calendar.getInstance();
     }
 
-    public void setDateSale(Date dateSale) {
+    public void setDateSale(Calendar dateSale) {
         this.dateSale = dateSale;
     }
 
-    @Basic
-    @Column(name = "payment_amount", nullable = false)
-    public BigInteger getPaymentAmount() {
-        return paymentAmount;
-    }
-
-    public void setPaymentAmount(BigInteger paymentAmount) {
-        this.paymentAmount = paymentAmount;
-    }
-
-    @Id
-    @Column(name = "login_user_sale_fk", nullable = false, length = 20)
-    public String getLoginUserSaleFk() {
-        return loginUserSaleFk;
-    }
-
-    public void setLoginUserSaleFk(String loginUserSaleFk) {
-        this.loginUserSaleFk = loginUserSaleFk;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        SaleEntity that = (SaleEntity) o;
-
-        if (idSale != that.idSale) return false;
-        if (!Objects.equals(dateSale, that.dateSale)) return false;
-        if (!Objects.equals(paymentAmount, that.paymentAmount))
-            return false;
-        return Objects.equals(loginUserSaleFk, that.loginUserSaleFk);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idSale;
-        result = 31 * result + (dateSale != null ? dateSale.hashCode() : 0);
-        result = 31 * result + (paymentAmount != null ? paymentAmount.hashCode() : 0);
-        result = 31 * result + (loginUserSaleFk != null ? loginUserSaleFk.hashCode() : 0);
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumns({@JoinColumn(name = "passport_series_client_fk", referencedColumnName = "passport_series_client", nullable = false), @JoinColumn(name = "passport_number_client_fk", referencedColumnName = "passport_number_client", nullable = false)})
-    public ClientEntity getClient() {
-        return client;
-    }
-
-    public void setClient(ClientEntity client) {
-        this.client = client;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "vin_number_car_fk", referencedColumnName = "vin_number_car", nullable = false)
-    public CarEntity getCarByVinNumberCarFk() {
-        return carByVinNumberCarFk;
-    }
-
-    public void setCarByVinNumberCarFk(CarEntity carByVinNumberCarFk) {
-        this.carByVinNumberCarFk = carByVinNumberCarFk;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "login_user_sale_fk", referencedColumnName = "login_user", nullable = false, insertable = false, updatable = false)
-    public UserEntity getUserByLoginUserSaleFk() {
-        return userByLoginUserSaleFk;
-    }
-
-    public void setUserByLoginUserSaleFk(UserEntity userByLoginUserSaleFk) {
-        this.userByLoginUserSaleFk = userByLoginUserSaleFk;
+    public String getData(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(dateSale.getTime());
     }
 }

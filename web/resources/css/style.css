@@ -137,6 +137,10 @@ nav a, img {
     background-color: rgba(34,76,255,0.55);
 }
 
+.main-menu button:focus {
+    outline: none;
+}
+
 .table-style {
     font-size: 14px;
     border-radius: 10px;
@@ -252,6 +256,7 @@ nav a, img {
     width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-left: 5px;
     padding: 10px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -260,6 +265,19 @@ nav a, img {
 
 .add-dialog form {
     text-align: center;
+}
+
+.add-dialog label {
+    display: flex;
+    background: #e2e2e2;
+    padding: 5px;
+}
+
+
+.label-text {
+    margin: auto;
+    width: 20%;
+    color: #4b4b4b;
 }
 
 .dialog-panel button{
@@ -299,4 +317,48 @@ nav a, img {
 
 .modal.button-container {
     padding: 10px;
+}
+
+.input-error {
+    color: red;
+    border: 1px solid red;
+}
+
+.search-container form {
+    display: inline-block;
+    margin-block-end: auto;
+    margin: 5px;
+}
+
+.search-input {
+    width: 85%;
+}
+
+.search-input input {
+    padding: 3px;
+    display: inline-block;
+    width: 80%;
+}
+
+.search-input button {
+    display: inline-block;
+    width: 10%;
+    margin-left: 10px;
+    padding: 3px;
+}
+
+.search-reset {
+    width: 10%;
+}
+
+.search-reset button {
+    margin: auto;
+    width: 100%;
+    padding: 3px;
+}
+
+.order-container form p {
+    margin-block-end: auto;
+    margin-block-start: auto;
+    float: left;
 }

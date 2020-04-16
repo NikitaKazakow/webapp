@@ -14,6 +14,10 @@ public class CarService {
         return carDao.getAll();
     }
 
+    public List<CarEntity> getAll(String[] orderByValues, String[] orderDirectionValues) {
+        return carDao.getAll(orderByValues, orderDirectionValues);
+    }
+
     public void add(CarEntity carEntity) {
         carDao.save(carEntity);
     }
@@ -40,5 +44,17 @@ public class CarService {
         }
         else
             return false;
+    }
+
+    public List<CarEntity> findByAll(String value) {
+        return carDao.filterByAll("%" + value + "%");
+    }
+
+    public List<CarEntity> findByAllWithOrder(String searchValue, String[] orderByValues, String[] orderDirectionValues) {
+        return carDao.filterByAll(searchValue, orderByValues, orderDirectionValues);
+    }
+
+    public boolean isCarExist(String vinNumber) {
+        return carDao.get(vinNumber).isPresent();
     }
 }

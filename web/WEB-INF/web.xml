@@ -14,6 +14,14 @@
 
     <!--Servlets-->
     <servlet>
+        <servlet-name>SaleServlet</servlet-name>
+        <servlet-class>servlet.SaleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientServlet</servlet-name>
+        <servlet-class>servlet.ClientServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>logOutServlet</servlet-name>
         <servlet-class>servlet.LogOutServlet</servlet-class>
     </servlet>
@@ -37,6 +45,14 @@
     </filter-mapping>
 
     <!--Servlets mappings-->
+    <servlet-mapping>
+        <servlet-name>SaleServlet</servlet-name>
+        <url-pattern>/sale</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientServlet</servlet-name>
+        <url-pattern>/client</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>logOutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>

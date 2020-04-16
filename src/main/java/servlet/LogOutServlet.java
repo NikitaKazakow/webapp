@@ -17,6 +17,7 @@ public class LogOutServlet extends HttpServlet {
             session.removeAttribute("password");
         }
 
+        req.setAttribute("error", "0");
         req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 }

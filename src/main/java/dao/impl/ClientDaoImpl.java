@@ -2,16 +2,15 @@ package dao.impl;
 
 import dao.IDao;
 import entity.ClientEntity;
-import entity.pk.ClientEntityPK;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ClientDaoImpl implements IDao<ClientEntity, ClientEntityPK> {
+public class ClientDaoImpl implements IDao<ClientEntity, String> {
     @Override
-    public Optional<ClientEntity> get(ClientEntityPK id) {
+    public Optional<ClientEntity> get(String id) {
         return Optional.ofNullable(HibernateUtil.getSession().get(ClientEntity.class, id));
     }
 
